@@ -8,10 +8,10 @@ angular.module('showShotApp', [
 ])
   .config ($routeProvider) ->
     $routeProvider
-      .when '/',
+      .when '/Yo',
         templateUrl: 'views/main.html'
         controller: 'MainCtrl'
-      .when '/shot',
+      .when '/',
         templateUrl: 'views/shot.html'
         controller: 'ShotCtrl'
       .otherwise

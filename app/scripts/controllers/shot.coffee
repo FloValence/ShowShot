@@ -41,8 +41,10 @@ angular.module('showShotApp')
           url: data.short_url
         $scope.history.push $scope.currentShot
       ).error((data, status)->
-        console.log data
-        console.log status
+        $scope.currentShot =
+          title: 'Too bad, Nothing found!!'
+          img: 'http://placehold.it/800x600'
+          url: 'http://drbl.in/jwCH'
       )
       
     $scope.showTheShot = (shot, $event) ->
