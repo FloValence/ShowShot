@@ -2,39 +2,33 @@
 
 angular.module('showShotApp')
   .controller 'ShotCtrl', ($scope, $http, $templateCache) ->
-    $scope.history = [
-      {
-        title: 'HTML5 Boilerplate'
-        img: 'http://placehold.it/800x600'
-        url: '/#/shot'
-      }
-      {
-        title:'AngularJS'
-        img: 'http://placehold.it/800x600'
-        url: '/#/shot'
-      }
-      {
-        title: 'Karma'
-        img: 'http://placehold.it/800x600'
-        url: '/#/shot'
-      }
-      {
-        title: 'iPhone - iOS Daily Verse Bible App'
-        img: 'http://d13yacurqjgara.cloudfront.net/users/4605/screenshots/1326449/snap.png'
-        url: 'http://drbl.in/jwCH'
-      }
-    ]
+    $scope.history = []
     
     $scope.currentShot =
-      title: 'iPhone - iOS Daily Verse Bible App'
-      img: 'http://d13yacurqjgara.cloudfront.net/users/4605/screenshots/1326449/snap.png'
+      title: 'Wait for it!'
+      img: 'http://placehold.it/800x600'
       url: 'http://drbl.in/jwCH'
+      
+    
+    $scope.initialShot = () ->
+      $http(
+        method: 'JSONP'
+        url: 'http://api.dribbble.com/shots/?callback=JSON_CALLBACK&page=1&per_page=1'
+        cache: $templateCache
+      ).success((data, status)->
+        console.log data
+        $scope.currentShot =
+          title: data.shots[0].title
+          img: data.shots[0].image_url
+          url: data.shots[0].short_url
+        $scope.initialId = data.shots[0].id
+        $scope.history.push $scope.currentShot
+      ).error((data, status)->
+        console.log data
+        console.log status
+      )
 
     $scope.newShot = () ->
-      #$scope.history.push
-      #  title:$scope.newID,
-      #  img:'placehold.it/800x600'
-        
       $http(
         method: 'JSONP'
         url: 'http://api.dribbble.com/shots/'+$scope.newID+'?callback=JSON_CALLBACK'
@@ -57,3 +51,5 @@ angular.module('showShotApp')
           title: shot.title
           img: shot.img
           url: shot.url
+    
+    $scope.initialShot()
