@@ -1,10 +1,5 @@
 'use strict'
 
-
-  
-
-
-
 angular.module('showShotApp', [
   'ngCookies',
   'ngResource',

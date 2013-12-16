@@ -294,7 +294,7 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
-            '.htaccess',
+            //'.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
             'fonts/*'
@@ -369,6 +369,18 @@ module.exports = function (grunt) {
       unit: {
         configFile: 'karma.conf.js',
         singleRun: true
+      }
+    },
+    'ftp-deploy': {
+      build: {
+        auth: {
+          host: 'ftpperso.free.fr',
+          port: 21,
+          authKey: 'key1'
+        },
+        src: 'dist/',
+        dest: 'showshot',
+        exclusions: ['dist/**/.DS_Store', 'dist/**/Thumbs.db', 'dist/tmp', 'dist/.htaccess']
       }
     }
   });
