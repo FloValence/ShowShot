@@ -51,7 +51,6 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-  width: 920px;
 }
 
 .jumbotron .btn {
@@ -71,7 +70,7 @@ body {
 /* Responsive: Landscape tablets and up */
 @media screen and (min-width: 1000px) {
   .container {
-    max-width: 950px;
+    max-width: 900px;
   }
 
 /* Remove the padding we set earlier */
@@ -89,6 +88,10 @@ body {
 .jumbotron {
   border-bottom: 0;
 }
+}
+
+.img-responsive{
+  margin: 0 auto;
 }
 
 
