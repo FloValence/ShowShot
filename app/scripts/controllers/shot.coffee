@@ -77,7 +77,7 @@ angular.module('showShotApp')
       
     $scope.showTheShot = (shot, $event) ->
       $event.preventDefault()
-      $('body').animate { scrollTop: 0 }, 400
+      $('body').animate { scrollTop: 0 + $('.container.lil').height() + 20}, 400
       $scope.currentShot =
           title: shot.title
           img: shot.img
