@@ -1,6 +1,31 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
+
+$text-color:                  #444444;
+
+$brand-primary:               #ea4c89;
+$brand-pink:                  #ea4c89;
 
 @import 'sass-bootstrap/lib/bootstrap';
+//@import 'sass-bootstrap/lib/variables';
+
+
+
+$btn-pink-color:              #fff !default;
+$btn-pink-bg:                 $brand-pink !default;
+$btn-pink-border:             darken($btn-pink-bg, 5%) !default;
+
+$state-pink-text:             darken($btn-pink-bg, 5%) !default;
+$state-pink-bg:               lighten($btn-pink-bg, 80%) !default;
+$state-pink-border:           darken(adjust-hue($state-pink-bg, -10), 5%) !default;
+
+// Pink !!
+.has-pink {
+  @include form-control-validation($state-pink-text, $state-pink-text, $state-pink-bg);
+}
+
+.btn-pink {
+  @include button-variant($btn-pink-color, $btn-pink-bg, $btn-pink-border);
+}
 
 .browsehappy {
   margin: 0.2em 0;
@@ -11,7 +36,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 /* Space out content a bit */
 body {
-  padding-top: 20px;
+  //padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -51,20 +76,7 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
-}
-
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
-
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-}
-
-.marketing p + h4 {
-  margin-top: 28px;
+  padding-top: 10px;
 }
 
 /* Responsive: Landscape tablets and up */
@@ -101,8 +113,35 @@ h1, h2, h3, h4, h5 {
   color: #444444
 }
 
-.btn-pink {
-  color: white;
-  background-color: #ea4c89;
-  border-color: #e02a70;
+
+
+.lil {
+  display: none;
 }
+.container.lil{
+  margin: 10px 0;
+}
+
+@media (max-width: $screen-xs-max) { 
+  .lil{
+    display: block;
+  }
+  .big{
+    display: none;
+  }
+}
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) { 
+}
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) { 
+  
+}
+@media (min-width: $screen-lg-min) { 
+
+}
+
+
+
+
+
+
+

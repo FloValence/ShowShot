@@ -1,7 +1,6 @@
 'use strict'
 
 localStore = new Lawnchair 'Shots', (local) ->
-  console.log('callback')
 
 angular.module('showShotApp')
   .controller 'ShotCtrl', ($scope, $http, $templateCache) ->
@@ -14,7 +13,6 @@ angular.module('showShotApp')
       localStore.keys (keys)->
         chargement = []
         for k in keys
-          console.log k
           localStore.get k, (shot)->
             $scope.histor.push
               title:shot.title
@@ -22,7 +20,6 @@ angular.module('showShotApp')
               url:shot.url
             
         $scope.initialShot()
-        console.log chargement
     
     $scope.currentShot =
       title: 'Wait for it!'
@@ -55,12 +52,15 @@ angular.module('showShotApp')
       
 
     $scope.newShot = () ->
+      $scope.currentShot =
+        title: 'Loading, Please Wait'
+        img: 'http://placehold.it/800x600'
+        url: '#/'
       $http(
         method: 'JSONP'
         url: 'http://api.dribbble.com/shots/'+$scope.newID+'?callback=JSON_CALLBACK'
         cache: $templateCache
       ).success((data, status)->
-        console.log data
         $scope.currentShot =
           title: data.title
           img: data.image_url
@@ -72,17 +72,17 @@ angular.module('showShotApp')
         $scope.currentShot =
           title: 'Too bad, Nothing found!!'
           img: 'http://placehold.it/800x600'
-          url: 'http://drbl.in/jwCH'
+          url: '#/'
       )
       
     $scope.showTheShot = (shot, $event) ->
       $event.preventDefault()
+      $('body').animate { scrollTop: 0 }, 400
       $scope.currentShot =
           title: shot.title
           img: shot.img
           url: shot.url
           key: shot.key
-      console.log $scope.histor
           
     $scope.loadShots()
           

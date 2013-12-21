@@ -380,7 +380,7 @@ module.exports = function (grunt) {
         },
         src: 'dist/',
         dest: 'showshot',
-        exclusions: ['dist/**/.DS_Store', 'dist/**/Thumbs.db', 'dist/tmp', 'dist/.htaccess']
+        exclusions: ['dist/**/.DS_Store', 'dist/**/Thumbs.db', 'dist/tmp', 'dist/.htaccess', 'dist/bower_components']
       }
     }
   });
