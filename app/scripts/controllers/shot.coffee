@@ -20,6 +20,8 @@ angular.module('showShotApp')
               url:shot.url
             
         $scope.initialShot()
+        
+    $scope.replaced = false
     
     $scope.currentShot =
       title: 'Wait for it!'
@@ -61,18 +63,25 @@ angular.module('showShotApp')
         url: 'http://api.dribbble.com/shots/'+$scope.newID+'?callback=JSON_CALLBACK'
         cache: $templateCache
       ).success((data, status)->
+        console.log $scope.replaced
         $scope.currentShot =
           title: data.title
           img: data.image_url
           url: data.short_url
           key: data.id
+          replaced: $scope.currentShot.replaced
         $scope.histor.push $scope.currentShot
         localStore.save $scope.currentShot
+        console.log $scope.replaced
       ).error((data, status)->
-        $scope.currentShot =
-          title: 'Too bad, Nothing found!!'
-          img: 'http://placehold.it/800x600'
-          url: '#/'
+        ##$scope.currentShot =
+          ##title: 'Too bad, Nothing found!!'
+          ##img: 'http://placehold.it/800x600'
+          ##url: '#/'
+        $scope.newID++
+        $scope.replaced = true
+        console.log $scope.replaced
+        $scope.newShot()
       )
       
     $scope.showTheShot = (shot, $event) ->
