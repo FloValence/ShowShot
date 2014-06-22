@@ -18,15 +18,18 @@
   </div>
 </div>
 
-  <div class="jumbotron">
+<div class="jumbotron">
   <div class="container">
     <h1><a href="{{currentShot.url}}" target="_blank">{{currentShot.title}}</a></h1>
     
-    <p class="text-center" ng-class="{replace : replaced}">
+    <div class="text-center" ng-class="{replace : replaced}">
+      <div class="replaced">
+        ID not found, you see the next one :)
+      </div>
       <a href="{{currentShot.url}}" target="_blank">
         <img src="{{currentShot.img}}" alt="{{currentShot.title}}" class="img-responsive">
       </a>
-    </p>
+    </div>
   </div>
 </div>
 <div class="container">

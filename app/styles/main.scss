@@ -106,11 +106,24 @@ body {
   margin: 0 auto;
 }
 
+/* Replace Style */
+
+div.replaced{
+  display: none;
+}
+
+.replace div.replaced {
+  display: block;
+  background: $state-pink-bg;
+  background: rgba($brand-pink, 0.5);
+  color: white;
+}
+
 
 /* Perso adds */
 
 h1, h2, h3, h4, h5 {
-  color: #444444
+  color: #444444;
 }
 
 
